@@ -17,8 +17,8 @@ public:
     typedef std::string                             key_type;
     typedef T                                       mapped_type;
     typedef Node<key_type,mapped_type,S>            Node;
-    typedef IndexerClass                            key_indexer;
-    typedef EraserClass                             key_eraser;
+    typedef Radix_Indexer<mapped_type>              key_indexer;
+    typedef Radix_Eraser<mapped_type>               key_eraser;
     typedef RadixIterator<mapped_type>              iterator;
 
     // def ctor
