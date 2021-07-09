@@ -18,7 +18,11 @@ RadixTrie<T>::RadixTrie(const RadixTrie<T> &&rhs) : trie_(rhs.trie_) {}
 
 template<typename T>
 RadixTrie<T> &RadixTrie<T>::operator=(const RadixTrie<T> &rhs) {
-    return trie_ == rhs.trie_;
+    if (this != &rhs) {
+        RadixTrie<T> ph(rhs);
+        this->swap(ph);
+    }
+    return *this;
 }
 
 template<typename T>
