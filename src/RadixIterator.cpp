@@ -11,6 +11,9 @@ template<typename T>
 RadixIterator<T>::RadixIterator(Iterator<K, T, S> &wrapped) : baseIter_(wrapped) {}
 
 template<typename T>
+RadixIterator<T>::RadixIterator(Iterator<K, T, S> &&wrapped) : baseIter_(wrapped) {}
+
+template<typename T>
 RadixIterator<T>::RadixIterator(const RadixIterator &rhs) : baseIter_(rhs.baseIter_) {}
 
 template<typename T>
@@ -18,7 +21,8 @@ RadixIterator<T>::RadixIterator(const RadixIterator &&rhs) : baseIter_(rhs.baseI
 
 template<typename T>
 std::pair<const typename RadixIterator<T>::K, T&> RadixIterator<T>::operator*() {
-    return std::pair<const K, T &>(getWord(),get()->value_);
+    const std::string val(getWord());
+    return std::pair<const std::string, T &>(val,*(get()->value_));
 }
 
 template<typename T>
@@ -76,7 +80,7 @@ bool RadixIterator<T>::operator==(const RadixIterator &rhs) const {
 
 template<typename T>
 bool RadixIterator<T>::operator!=(const RadixIterator &rhs) const {
-    return *this != rhs;
+    return !(*this == rhs);
 }
 
 template<typename T>

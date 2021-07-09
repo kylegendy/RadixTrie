@@ -19,6 +19,7 @@ public:
     using reference             = Node<K,T,S>&;
 
     RadixIterator(Iterator<K,T,S>& wrapped);
+    RadixIterator(Iterator<K,T,S>&& wrapped);
 
     // copy ctor
     RadixIterator(const RadixIterator &rhs);
