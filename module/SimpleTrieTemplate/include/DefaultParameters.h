@@ -2,10 +2,10 @@
 // Created by Kyle Gendreau on 6/20/21.
 //
 
-#ifndef RADIXTRIE_PARAMETERS_H
-#define RADIXTRIE_PARAMETERS_H
+#ifndef SIMPLETRIETEMPLATE_DEFAULTPARAMETERS_H
+#define SIMPLETRIETEMPLATE_DEFAULTPARAMETERS_H
 
-#include "../module/SimpleTrieTemplate/include/SimpleTrieTemplate.h"
+#include "SimpleTrieTemplate.h"
 
 // assume all upper-case letters
 template<typename T>
@@ -75,13 +75,7 @@ public:
     }
 
     static int16_t findChildIndex(const char16_t& letter) {
-        return validateChar(letter);
-    }
-
-    static int32_t validateChar(const char32_t& letter) {
-        int32_t diff(letter - 'A');
-        assert(diff < 0 || diff > 25);
-        return diff;
+        return letter - 'A';
     }
 
     static void breakUpNode(Node<std::string,T,26>& node, int16_t diff) {
@@ -182,4 +176,4 @@ public:
     }
 };
 
-#endif // RADIXTRIE_PARAMETERS_H
+#endif //SIMPLETRIETEMPLATE_DEFAULTPARAMETERS_H
