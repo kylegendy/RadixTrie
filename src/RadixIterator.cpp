@@ -26,8 +26,9 @@ std::pair<const typename RadixIterator<T>::K, T&> RadixIterator<T>::operator*() 
 }
 
 template<typename T>
-Node<typename RadixIterator<T>::K, T, RadixIterator<T>::S> *RadixIterator<T>::operator->() {
-    return baseIter_.get();
+std::pair<const typename RadixIterator<T>::K, T&> RadixIterator<T>::operator->() {
+    const std::string val(getWord());
+    return std::pair<const std::string, T &>(val,*(get()->value_));
 }
 
 template<typename T>

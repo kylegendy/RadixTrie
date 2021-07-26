@@ -18,19 +18,21 @@ public:
     using pointer               = Node<K,T,S>*;
     using reference             = Node<K,T,S>&;
 
-    RadixIterator(Iterator<K,T,S>& wrapped);
+    explicit RadixIterator() = delete;
+
+    explicit RadixIterator(Iterator<K,T,S>& wrapped);
     RadixIterator(Iterator<K,T,S>&& wrapped);
 
     // copy ctor
-    RadixIterator(const RadixIterator &rhs);
-    RadixIterator(const RadixIterator &&rhs);
+    explicit RadixIterator(const RadixIterator &rhs);
+    explicit RadixIterator(const RadixIterator &&rhs);
 
     // dtor
     ~RadixIterator() = default;
 
 
-    /////////////////////////////////////////////////////////////////////////
-    /// ACCESSORS
+/////////////////////////////////////////////////////////////////////////
+/// ACCESSORS
 
     /**
      * @return the pair being pointed to by this
@@ -40,15 +42,15 @@ public:
     /**
      * @return a pointer to the node pointed to by this
      */
-    Node<K,T,S>* operator->();
+    std::pair<const K, T&> operator->();
 
     /**
      * @return a pointer to the node pointed to by this
      */
     Node<K,T,S>* &get();
 
-    /////////////////////////////////////////////////////////////////////////
-    /// MODIFIERS
+/////////////////////////////////////////////////////////////////////////
+/// MODIFIERS
 
     /**
      * swaps all values between *this and rhs
@@ -91,8 +93,8 @@ public:
     // Iterator operator--(int);
 
 
-    /////////////////////////////////////////////////////////////////////////
-    /// COMPARERS
+/////////////////////////////////////////////////////////////////////////
+/// COMPARERS
 
     /**
      * compares equivalence

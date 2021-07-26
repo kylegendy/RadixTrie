@@ -45,7 +45,7 @@ public:
     bool empty() const noexcept;
 
     /**
-     * returns the number of articles in trie
+     * returns the number of words in trie
      * @return - unsigned int for number of elements in trie
      */
     uint32_t size() const noexcept;
@@ -98,8 +98,8 @@ public:
      * finds the last viable node in sequence for the article. The returned pair contains, first, a boolean which holds
      * the same value as the contains() function returns, and second, an iterator at the last viable node in sequence.
      *
-     * Example: given 'LOOKUP' was inserted in a BTrie, scout('LOOK') will return pair<false,node('K')>, and
-     * scout('LOOKUP') will return pair<true,node('P')> (where node(N) represents the node at N letter in the node
+     * Example: given 'LOOKUP' was inserted in a BTrie, scout('LOOK') will return pair<false,iterator(node('K'))>, and
+     * scout('LOOKUP') will return pair<true,iterator(node('P'))> (where node(N) represents the node at N letter in the node
      * sequence)
      *
      * @param article - the article being searched for
