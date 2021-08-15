@@ -1,3 +1,3 @@
-[submodule "SimpleTrieTemplate"]
+[submodule "module/SimpleTrieTemplate"]
 	path = module/SimpleTrieTemplate
 	url = https://github.com/kylegendy/SimpleTrieTemplate.git
